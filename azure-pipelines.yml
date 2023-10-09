@@ -3,17 +3,21 @@
 # Add steps that build, run tests, deploy, and more:
 # https://aka.ms/yaml
 
+pool: Default
 trigger:
 - master
-
-pool:
-  vmImage: ubuntu-latest
-
 steps:
-- script: echo Hello, world!
-  displayName: 'Run a one-line script'
+- task: CopyFiles@2
+  displayName: 'Copy Files to:$(build.artifactstagingdirectory)/Templates'
+inputs:
+  SourceFolder: deployment
+  Contents: '*.json'
+  TargetFolder: '$(build.artifactstagingdirectory)/Templates'
 
-- script: |
-    echo Add other tasks to build, test, and deploy your project.
-    echo See https://aka.ms/yaml
-  displayName: 'Run a multi-line script'
+- task: ArchiveFiles@2
+displayName: 'Archive $(Build.SourcesDirectory)'
+inputs:
+  rootFolderOrFile: '$(Build.SourcesDirectory)'
+  includeRootFolder: false
+- task: PublishBuildArtifacts@1
+  displayName: 'Publish Artifact: drop'
