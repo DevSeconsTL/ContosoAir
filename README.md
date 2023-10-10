@@ -1,3 +1,5 @@
+[![Build Status](https://dev.azure.com/devsecoping/GitIntegration/_apis/build/status%2FDevSeconsTL.ContosoAir?branchName=master)](https://dev.azure.com/devsecoping/GitIntegration/_build/latest?definitionId=31&branchName=master)
+
 # This project is retired, archived, and no longer supported. You are welcome to continue to use and fork the repository.
 
 
