@@ -9,7 +9,7 @@ steps:
       testResultsFiles: $(System.DefaultWorkingDirectory)/test-report.xml
   - task: PublishCodeCoverageResults@1
     displayName: 'Publish Code Coverage'
-    condition: 'in(variables[], "Succeeded")'
+    condition: 'in(variables[''Agent.JobStatus''], ''Succeeded'')'
     inputs:
       codeCoverageTool: Cobertura
       summaryFileLocation: '$(System.DefaultWorkingDirectory)/coverage/*coverage.xml'
