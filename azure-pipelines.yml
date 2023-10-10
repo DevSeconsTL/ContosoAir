@@ -13,7 +13,6 @@ steps:
     inputs:
       codeCoverageTool: Cobertura
       summaryFileLocation: '$(System.DefaultWorkingDirectory)/coverage/*coverage.xml'
-      report
       reportDirectory: $(System.DefaultWorkingDirectory)/coverage
   - task: ArchiveFiles@2
     displayName: 'Archive sources'
