@@ -1,6 +1,6 @@
 pool: Azure Pipelines
 trigger:
-- master
+  - master
 steps:
   - task: PublishTestResults@2
     displayName: 'Publish Test Results'
@@ -9,10 +9,11 @@ steps:
       testResultsFiles: $(System.DefaultWorkingDirectory)/test-report.xml
   - task: PublishCodeCoverageResults@1
     displayName: 'Publish Code Coverage'
-    condition: 'in(variables[], ''Succeeded'')'
+    condition: 'in(variables["Agent.JobStatus"], "Succeeded")'
     inputs:
       codeCoverageTool: Cobertura
-      summaryFileLocation:'$(System.DefaultWorkingDirectory)/coverage/*coverage.xml'
+      summaryFileLocation: '$(System.DefaultWorkingDirectory)/coverage/*coverage.xml'
+      report
       reportDirectory: $(System.DefaultWorkingDirectory)/coverage
   - task: ArchiveFiles@2
     displayName: 'Archive sources'
