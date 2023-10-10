@@ -3,7 +3,7 @@
 # Add steps that build, r, andun tests, deploy more:
 # https://aka.ms/yaml
 
-pool: Default
+pool: Azure Pipelines
 trigger:
 - master
 steps:
